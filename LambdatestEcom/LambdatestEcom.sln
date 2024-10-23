@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34622.214
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LambdatestEcom", "Playwright\LambdatestEcom.csproj", "{E7BBE06C-3B07-409E-A226-2D9B5B96C4D8}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LambdatestEcomSpecFlow", "SpecFlow\LambdatestEcomSpecFlow.csproj", "{04A7CB6C-6009-4DAA-96B8-F33EDC2D320B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E7BBE06C-3B07-409E-A226-2D9B5B96C4D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E7BBE06C-3B07-409E-A226-2D9B5B96C4D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E7BBE06C-3B07-409E-A226-2D9B5B96C4D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E7BBE06C-3B07-409E-A226-2D9B5B96C4D8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{04A7CB6C-6009-4DAA-96B8-F33EDC2D320B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{04A7CB6C-6009-4DAA-96B8-F33EDC2D320B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{04A7CB6C-6009-4DAA-96B8-F33EDC2D320B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{04A7CB6C-6009-4DAA-96B8-F33EDC2D320B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C0249CA1-4002-4BA1-8023-C9F83C6E79F7}
+	EndGlobalSection
+EndGlobal
