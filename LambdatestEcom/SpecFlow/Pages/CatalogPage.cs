@@ -23,7 +23,9 @@ namespace LambdatestEcom.Pages
 
         public async Task AddProductToCart(int productIndex)
         {
+            await _page.WaitForTimeoutAsync(500);
             await _page.Locator(".product-thumb-top").Nth(productIndex).HoverAsync();
+            await _page.WaitForTimeoutAsync(500);
             await _page.Locator(".product-thumb-top").Nth(productIndex).GetByRole(AriaRole.Button).Filter(new() { HasText = "Add to Cart" }).ClickAsync();
         }
         
