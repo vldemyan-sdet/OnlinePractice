@@ -36,7 +36,7 @@ namespace LambdatestEcom
                 ViewportSize = new ViewportSize
                 {
                     Width = 1920,
-                    Height = 900
+                    Height = 1400
                 },
                 StorageStatePath = _useState ? "../../../playwright/.auth/state.json" : null,
             });

@@ -50,7 +50,6 @@ namespace LambdatestEcom.Tests
             await catalogPage.UseExistingAddress();
 
             await checkoutPage.AcceptTermsAndConditions();
-            await page.PauseAsync();
             await checkoutPage.ConfirmOrder();
             await checkoutPage.Continue();
 

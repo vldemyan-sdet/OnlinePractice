@@ -42,12 +42,12 @@ namespace LambdatestEcom.Pages
         public async Task ConfirmOrder()
         {
             await _page.GetByRole(AriaRole.Button, new() { Name = "Continue" }).ClickAsync();
-            await _page.GetByRole(AriaRole.Banner, new() { Name = "Confirm Order" }).ClickAsync();
+            await _page.GetByRole(AriaRole.Button, new() { Name = "Confirm Order" }).ClickAsync();
         }
                 
         public async Task Continue()
         {
-            await _page.GetByRole(AriaRole.Button, new() { Name = "Continue" }).ClickAsync();
+            await _page.GetByRole(AriaRole.Link, new() { Name = "Continue" }).ClickAsync();
             await _page.WaitForLoadStateAsync(LoadState.DOMContentLoaded);
         }
 
