@@ -20,7 +20,7 @@ namespace LambdatestEcom.Pages
         {
             await _page.GetByRole(AriaRole.Button, new() { Name = "Shop by Category" }).ClickAsync();
             await _page.GetByRole(AriaRole.Link, new() { Name = name }).ClickAsync();
-            //await _page.WaitForLoadStateAsync(LoadState.DOMContentLoaded);
+            await _page.WaitForLoadStateAsync(LoadState.DOMContentLoaded);
         }
 
         public async Task OpenMyAccount()

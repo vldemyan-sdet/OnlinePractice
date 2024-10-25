@@ -42,7 +42,7 @@ namespace LambdatestEcom.Tests
             await homePage.OpenMyAccount();
             await myAccountPage.OpenOrderHistory();
             var orderCountBefore = await myAccountPage.GetOrderCount();
-            await homePage.OpenCategory("Laptops & Noteboks");
+            await homePage.OpenCategory("Laptops & Notebooks");
 
             await catalogPage.FilterAvailability("In stock");
             await catalogPage.AddProductToCart(5);

@@ -51,7 +51,7 @@ namespace LambdatestEcom
 
             page = await context.NewPageAsync();
 
-            //page.SetDefaultTimeout(5000);
+            page.SetDefaultTimeout(5000);
         }
 
         [TearDown]

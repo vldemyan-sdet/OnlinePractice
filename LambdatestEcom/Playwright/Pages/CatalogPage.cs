@@ -14,7 +14,7 @@ namespace LambdatestEcom.Pages
         public async Task FilterAvailability(string filterName)
         {
 
-            await _page.Locator("#container .mz-filter-group.stock_status").GetByText("In stok").ClickAsync();
+            await _page.Locator("#container .mz-filter-group.stock_status").GetByText(filterName).ClickAsync();
             await _page.WaitForURLAsync("**/*&mz_fss*");
 
             await _page.WaitForLoadStateAsync(LoadState.NetworkIdle);
