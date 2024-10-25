@@ -29,7 +29,7 @@ namespace LambdatestEcom.Pages
         
         public async Task GoToCheckout()
         {
-            await _page.GetByRole(AriaRole.Link, new() { Name = "View cart" }).ClickAsync();
+            await _page.GetByRole(AriaRole.Link, new() { Name = "Checkout" }).ClickAsync();
         }
 
         internal async Task UseExistingAddress()
