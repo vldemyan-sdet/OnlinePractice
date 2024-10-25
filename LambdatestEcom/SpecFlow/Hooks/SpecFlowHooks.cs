@@ -24,7 +24,7 @@ namespace LambdatestEcom.Hooks
         public async Task BeforeScenarioWithTag()
         {
             var page = _scenarioContext.Get<IPage>("page");
-            var context = _scenarioContext.Get<IBrowserContext>("page");
+            var context = _scenarioContext.Get<IBrowserContext>("context");
             await page.GotoAsync("https://ecommerce-playground.lambdatest.io/index.php?route=account/account");
 
             if (page.Url.EndsWith("?route=account/login"))
@@ -64,8 +64,8 @@ namespace LambdatestEcom.Hooks
             {
                 ViewportSize = new ViewportSize
                 {
-                    Width = 192,
-                    Height = 108
+                    Width = 1920,
+                    Height = 1080
                 },
                 StorageStatePath = _useState ? "../../../playwright/.auth/state.json" : null,
             });
