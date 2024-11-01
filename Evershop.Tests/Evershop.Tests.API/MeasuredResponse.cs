@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Evershop.Tests.API
 {
-    public class MeasuredResponse : RestResponse
+    public class MeasuredResponse
     {
         public MeasuredResponse(RestResponse restResponse, TimeSpan executionTime)
         {
