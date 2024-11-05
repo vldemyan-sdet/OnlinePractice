@@ -11,14 +11,20 @@ namespace Evershop.Tests.API.Assertions
         public virtual void SubscribeToAll()
         {
             ApiAssertExtensions.AssertStatusCodeEvent += AssertStatusCodeEventHandler;
+            ApiAssertExtensions.AssertSuccessStatusCodeEvent += AssertSuccessStatusCodeEventHandler;
         }
 
         public virtual void UnsubscribeToAll()
         {
             ApiAssertExtensions.AssertStatusCodeEvent -= AssertStatusCodeEventHandler;
+            ApiAssertExtensions.AssertSuccessStatusCodeEvent -= AssertSuccessStatusCodeEventHandler;
         }
 
         protected virtual void AssertStatusCodeEventHandler(object sender, ApiAssertEventArgs arg)
+        {
+        }
+
+        protected virtual void AssertSuccessStatusCodeEventHandler(object sender, ApiAssertEventArgs arg)
         {
         }
 

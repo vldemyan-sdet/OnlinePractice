@@ -23,6 +23,11 @@ namespace Evershop.Tests.API.Assertions
         {
             Console.WriteLine($"Assert response status code is equal to {arg.ActionValue}.");
         }
+
+        protected override void AssertSuccessStatusCodeEventHandler(object sender, ApiAssertEventArgs arg)
+        {
+            Console.WriteLine($"Assert success response status code is {arg.ActionValue}.");
+        }
     }
     
 }

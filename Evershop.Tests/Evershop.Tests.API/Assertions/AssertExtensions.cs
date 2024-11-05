@@ -13,10 +13,10 @@ public static class ApiAssertExtensions
     public static event EventHandler<ApiAssertEventArgs> AssertContentNotEqualsEvent;
     public static event EventHandler<ApiAssertEventArgs> AssertResultEqualsEvent;
     public static event EventHandler<ApiAssertEventArgs> AssertResultNotEqualsEvent;
-    public static event EventHandler<ApiAssertEventArgs> AssertSuccessStatusCodeEvent;
 
     
     public static event EventHandler<ApiAssertEventArgs> AssertStatusCodeEvent;
+    public static event EventHandler<ApiAssertEventArgs> AssertSuccessStatusCodeEvent;
 
 
     public static event EventHandler<ApiAssertEventArgs> AssertResponseHeaderEvent;
