@@ -6,32 +6,22 @@ using System.Net;
 namespace Evershop.Tests.API.Tests
 {
     [TestFixture]
-    public class ApiTests
+    public class ApiTests : BaseApiTest
     {
         private string _sid;
         private CookieCollection _cookies;
         private string uuid;
-        private App app;
 
         [SetUp]
         public async Task SetupAsync()
         {
-            app = new App();
             var request = new RestRequest("http://localhost:3000/admin/user/login", Method.Post);
             request.AddJsonBody(new { email = "admin@admin.com", password = "admin123" });
 
-            var response = await app.ApiClient.PostAsync<LoginResponseData>(request);
+            var response = await App.ApiClient.PostAsync<LoginResponseData>(request);
             _cookies = response.Response.Cookies;
 
-
-            Assert.That(response.Response.StatusCode, Is.EqualTo(HttpStatusCode.OK));
             response.AssertStatusCode(HttpStatusCode.OK);
-
-
-            var jsonResponse = JObject.Parse(response.Response.Content);
-            Assert.IsNotNull(jsonResponse["data"]);  
-            Assert.IsNotNull(jsonResponse["data"]["sid"]);
-            _sid = jsonResponse["data"]["sid"].ToString();
 
             Assert.IsNotNull(response.Data.Data.Sid); 
             _sid = response.Data.Data.Sid;
@@ -78,7 +68,7 @@ namespace Evershop.Tests.API.Tests
             request.AddJsonBody(JsonConvert.SerializeObject(product));
 
             // Act
-            var response = await app.ApiClient.PostAsync(request);
+            var response = await App.ApiClient.PostAsync(request);
 
             // Assert
             var jsonResponse = JObject.Parse(response.Response.Content);
@@ -101,7 +91,7 @@ namespace Evershop.Tests.API.Tests
                     request.AddCookie(_cookies[i].Name, _cookies[i].Value, _cookies[i].Path, _cookies[i].Domain);
                 }
                 request.AddHeader("Authorization", $"Bearer {_sid}");
-                var response = await app.ApiClient.DeleteAsync(request);
+                var response = await App.ApiClient.DeleteAsync(request);
 
                 Assert.That(response.Response.StatusCode, Is.EqualTo(HttpStatusCode.OK));
 
