@@ -22,6 +22,7 @@ namespace Evershop.Tests.API.Tests
             _cookies = response.Response.Cookies;
 
             response.AssertStatusCode(HttpStatusCode.OK);
+            response.AssertSuccessStatusCode();
 
             Assert.IsNotNull(response.Data.Data.Sid); 
             _sid = response.Data.Data.Sid;

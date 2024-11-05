@@ -1,4 +1,6 @@
-﻿namespace Evershop.Tests.API
+﻿using Evershop.Tests.API.Assertions;
+
+namespace Evershop.Tests.API
 {
     public class App
     {
@@ -34,19 +36,19 @@
         //    apiClientPlugin?.Disable();
         //}
 
-        //public void AddAssertionsEventHandler<TApiAssertionsEventHandler>()
-        //    where TApiAssertionsEventHandler : AssertExtensionsEventHandlers
-        //{
-        //    var elementEventHandler = (TApiAssertionsEventHandler)Activator.CreateInstance(typeof(TApiAssertionsEventHandler));
-        //    elementEventHandler?.SubscribeToAll();
-        //}
+        public void AddAssertionsEventHandler<TApiAssertionsEventHandler>()
+            where TApiAssertionsEventHandler : AssertExtensionsEventHandlers
+        {
+            var elementEventHandler = (TApiAssertionsEventHandler)Activator.CreateInstance(typeof(TApiAssertionsEventHandler));
+            elementEventHandler?.SubscribeToAll();
+        }
 
-        //public void RemoveAssertionsEventHandler<TApiAssertionsEventHandler>()
-        //    where TApiAssertionsEventHandler : AssertExtensionsEventHandlers
-        //{
-        //    var elementEventHandler = (TApiAssertionsEventHandler)Activator.CreateInstance(typeof(TApiAssertionsEventHandler));
-        //    elementEventHandler?.UnsubscribeToAll();
-        //}
+        public void RemoveAssertionsEventHandler<TApiAssertionsEventHandler>()
+            where TApiAssertionsEventHandler : AssertExtensionsEventHandlers
+        {
+            var elementEventHandler = (TApiAssertionsEventHandler)Activator.CreateInstance(typeof(TApiAssertionsEventHandler));
+            elementEventHandler?.UnsubscribeToAll();
+        }
 
         public ApiClientAdapter GetApiClientService(string url = null, bool sharedCookies = true, int maxRetryAttempts = 1, int pauseBetweenFailures = 1)
         {

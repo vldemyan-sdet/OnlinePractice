@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Evershop.Tests.API.Assertions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -25,7 +26,7 @@ namespace Evershop.Tests.API
                 //PluginExecutionEngine.AddPlugin(new ExecutionTimeUnderPlugin());
                 //PluginExecutionEngine.AddPlugin(new RetryFailedRequestsWorkflowPlugin());
                 //App.AddApiClientExecutionPlugin<ApiBddPlugin>();
-                //App.AddAssertionsEventHandler<BDDLoggingAssertExtensions>();
+                App.AddAssertionsEventHandler<BDDLoggingAssertExtensions>();
                 //ExecutionTimePlugin.Add();
                 //APIPluginsConfiguration.AddAssertExtensionsBddLogging();
                 //APIPluginsConfiguration.AddRetryFailedRequests();
