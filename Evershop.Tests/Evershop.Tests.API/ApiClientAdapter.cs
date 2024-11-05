@@ -1,5 +1,4 @@
 ﻿using Newtonsoft.Json;
-using Newtonsoft.Json.Serialization;
 using Polly;
 using RestSharp.Authenticators;
 using RestSharp.Serializers.NewtonsoftJson;

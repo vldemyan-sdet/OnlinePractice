@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Evershop.Tests.API
+﻿namespace Evershop.Tests.API
 {
     public class MeasuredResponse<TReturnType> : MeasuredResponse
      where TReturnType : class
