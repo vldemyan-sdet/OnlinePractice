@@ -1,7 +1,8 @@
-﻿using Newtonsoft.Json;
+﻿using Evershop.Tests.API.Models;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using RestSharp;
 using System.Net;
+using Attribute = Evershop.Tests.API.Models.Attribute;
 
 namespace Evershop.Tests.API
 {
