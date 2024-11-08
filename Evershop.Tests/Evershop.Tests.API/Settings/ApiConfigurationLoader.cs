@@ -12,6 +12,7 @@ public class ApiConfigurationLoader
         ApiSettings.MaxRetryAttempts = 3;
         ApiSettings.EnableBDDLogging = true;
         ApiSettings.EnableToastMessages = true;
+        ApiSettings.PostreeSqlConnectionString = "Host=localhost;Port=5433;Username=postgres;Password=postgres;Database=postgres";
     }
 
 }

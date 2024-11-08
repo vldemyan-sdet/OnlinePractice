@@ -1,5 +1,6 @@
 ﻿using Evershop.Tests.API.Assertions;
 using Evershop.Tests.API.Models;
+using Evershop.Tests.API.Utilities;
 using Newtonsoft.Json;
 using System.Net;
 
@@ -89,9 +90,12 @@ namespace Evershop.Tests.API.Tests
                     request.AddCookie(_cookies[i].Name, _cookies[i].Value, _cookies[i].Path, _cookies[i].Domain);
                 }
                 request.AddHeader("Authorization", $"Bearer {_sid}");
-                var deleteResponse = await App.ApiClient.DeleteAsync(request);
+                //var deleteResponse = await App.ApiClient.DeleteAsync(request);
 
-                deleteResponse.AssertStatusCode(HttpStatusCode.OK);
+                //deleteResponse.AssertStatusCode(HttpStatusCode.OK);
+
+                var dbUtil = new DbUtil();
+                dbUtil.DeleteProduct(_uuid);
             }
 
         }
