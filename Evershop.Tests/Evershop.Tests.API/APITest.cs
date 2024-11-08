@@ -1,13 +1,9 @@
 ﻿using Evershop.Tests.API.Assertions;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Evershop.Tests.API.Plugins;
 
 namespace Evershop.Tests.API
 {
-    public abstract class BaseApiTest : BaseTest
+    public abstract class APITest : BaseTest
     {
         private static bool _arePluginsAlreadyInitialized;
 
@@ -22,10 +18,10 @@ namespace Evershop.Tests.API
         {
             if (!_arePluginsAlreadyInitialized)
             {
-                //PluginExecutionEngine.AddPlugin(new LogLifecyclePlugin());
-                //PluginExecutionEngine.AddPlugin(new ExecutionTimeUnderPlugin());
-                //PluginExecutionEngine.AddPlugin(new RetryFailedRequestsWorkflowPlugin());
-                //App.AddApiClientExecutionPlugin<ApiBddPlugin>();
+                PluginExecutionEngine.AddPlugin(new LogLifecyclePlugin());
+                PluginExecutionEngine.AddPlugin(new ExecutionTimeUnderPlugin());
+                PluginExecutionEngine.AddPlugin(new RetryFailedRequestsWorkflowPlugin());
+                App.AddApiClientExecutionPlugin<ApiBddPlugin>();
                 App.AddAssertionsEventHandler<BDDLoggingAssertExtensions>();
                 //ExecutionTimePlugin.Add();
                 //APIPluginsConfiguration.AddAssertExtensionsBddLogging();

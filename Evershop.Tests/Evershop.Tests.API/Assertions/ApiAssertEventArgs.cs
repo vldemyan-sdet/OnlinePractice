@@ -1,4 +1,4 @@
-﻿namespace Evershop.Tests.API;
+﻿namespace Evershop.Tests.API.Assertions;
 public class ApiAssertEventArgs
 {
     public ApiAssertEventArgs(MeasuredResponse measuredResponse) => MeasuredResponse = measuredResponse;

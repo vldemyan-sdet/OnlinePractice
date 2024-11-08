@@ -2,7 +2,7 @@
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Schema;
 
-namespace Evershop.Tests.API;
+namespace Evershop.Tests.API.Assertions;
 public static class ApiAssertExtensions
 {
     private static List<string> _xmlSchemaValidationErrors;
@@ -13,12 +13,8 @@ public static class ApiAssertExtensions
     public static event EventHandler<ApiAssertEventArgs> AssertContentNotEqualsEvent;
     public static event EventHandler<ApiAssertEventArgs> AssertResultEqualsEvent;
     public static event EventHandler<ApiAssertEventArgs> AssertResultNotEqualsEvent;
-
-    
-    public static event EventHandler<ApiAssertEventArgs> AssertStatusCodeEvent;
     public static event EventHandler<ApiAssertEventArgs> AssertSuccessStatusCodeEvent;
-
-
+    public static event EventHandler<ApiAssertEventArgs> AssertStatusCodeEvent;
     public static event EventHandler<ApiAssertEventArgs> AssertResponseHeaderEvent;
     public static event EventHandler<ApiAssertEventArgs> AssertContentTypeEvent;
     public static event EventHandler<ApiAssertEventArgs> AssertContentEncodingEvent;
