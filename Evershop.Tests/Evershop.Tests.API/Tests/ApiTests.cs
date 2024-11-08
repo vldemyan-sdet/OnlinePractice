@@ -1,5 +1,6 @@
 ﻿using Evershop.Tests.API.Assertions;
 using Evershop.Tests.API.Models;
+using Evershop.Tests.API.Plugins;
 using Evershop.Tests.API.Utilities;
 using Newtonsoft.Json;
 using System.Net;
@@ -28,6 +29,7 @@ namespace Evershop.Tests.API.Tests
         }
 
         [Test]
+        [ExecutionTimeUnder]
         public async Task CreateProduct()
         {
             // Arrange
@@ -84,12 +86,12 @@ namespace Evershop.Tests.API.Tests
             if (_uuid != null)
             {
                 // Delete
-                var request = new RestRequest($"api/products/{_uuid}", Method.Delete);
-                for (int i = 0; i < _cookies.Count; i++)
-                {
-                    request.AddCookie(_cookies[i].Name, _cookies[i].Value, _cookies[i].Path, _cookies[i].Domain);
-                }
-                request.AddHeader("Authorization", $"Bearer {_sid}");
+                //var request = new RestRequest($"api/products/{_uuid}", Method.Delete);
+                //for (int i = 0; i < _cookies.Count; i++)
+                //{
+                //    request.AddCookie(_cookies[i].Name, _cookies[i].Value, _cookies[i].Path, _cookies[i].Domain);
+                //}
+                //request.AddHeader("Authorization", $"Bearer {_sid}");
                 //var deleteResponse = await App.ApiClient.DeleteAsync(request);
 
                 //deleteResponse.AssertStatusCode(HttpStatusCode.OK);

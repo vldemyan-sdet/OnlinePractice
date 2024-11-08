@@ -61,5 +61,36 @@ namespace Evershop.Tests.API.Utilities
                 }
             }
         }
+
+
+        public void LogTestExecutionTime(string testName, DateTime startTime, DateTime stopTime)
+        {
+
+            // Create a connection
+            using (var conn = new NpgsqlConnection(ApiSettings.PostreeSqlConnectionString))
+            {
+                try
+                {
+                    // Open the connection
+                    conn.Open();
+                    Console.WriteLine("Connection to PostgreSQL database successful!");
+
+                    // Example query execution (optional)
+                    using (var cmd = new NpgsqlCommand(@"INSERT INTO public.testruns(test_name, start_time, stop_time)	VALUES (@test_name, @start_time, @stop_time);", conn))
+                    {
+                        cmd.Parameters.AddWithValue("@test_name", testName);
+                        cmd.Parameters.AddWithValue("@start_time", startTime);
+                        cmd.Parameters.AddWithValue("@stop_time", stopTime);
+                        string result = cmd.ExecuteNonQuery().ToString();
+
+                        Console.WriteLine($"PostgreSQL: {result}");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Error: {ex.Message}");
+                }
+            }
+        }
     }
 }

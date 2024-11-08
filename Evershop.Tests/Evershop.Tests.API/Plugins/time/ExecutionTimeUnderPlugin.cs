@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿using Evershop.Tests.API.Utilities;
+using System.Reflection;
 
 namespace Evershop.Tests.API.Plugins;
 
@@ -36,12 +37,17 @@ public class ExecutionTimeUnderPlugin : Plugin
                 var startTime = _testsExecutionTimes[testFullName];
                 var totalExecutionTime = endTime - startTime;
                 _testsExecutionTimes.Remove(testFullName);
+
+                var dbUtil = new DbUtil();
+                dbUtil.LogTestExecutionTime(testFullName, startTime, endTime);
+
                 if (totalExecutionTime > executionTimeout)
                 {
                     throw new ExecutionTimeoutException($"The test {testFullName} was executed for {totalExecutionTime}. The specified limit was {executionTimeout}.");
                 }
             }
         }
+
     }
 
     private string GetTestFullName(MethodInfo memberInfo)
