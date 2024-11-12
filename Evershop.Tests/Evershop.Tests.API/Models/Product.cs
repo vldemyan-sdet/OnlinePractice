@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 
 namespace Evershop.Tests.API.Models
-{//product_id, uuid, type,variant_group_id, visibility, group_id, sku, price, weight, tax_class, status, created_at, updated_at, category_id
+{
     internal class Product
     {
         [JsonProperty("name")]

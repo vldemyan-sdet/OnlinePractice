@@ -20,6 +20,7 @@ namespace Evershop.Tests.API
             {
                 PluginExecutionEngine.AddPlugin(new LogLifecyclePlugin());
                 PluginExecutionEngine.AddPlugin(new ExecutionTimeUnderPlugin());
+                PluginExecutionEngine.AddPlugin(new ExecutionTimeLogInDbPlugin());
                 PluginExecutionEngine.AddPlugin(new RetryFailedRequestsWorkflowPlugin());
                 App.AddApiClientExecutionPlugin<ApiBddPlugin>();
                 App.AddAssertionsEventHandler<BDDLoggingAssertExtensions>();

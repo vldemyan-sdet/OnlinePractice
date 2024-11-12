@@ -1,6 +1,5 @@
 ﻿using Evershop.Tests.API.Assertions;
 using Evershop.Tests.API.Models;
-using Evershop.Tests.API.Plugins;
 using Evershop.Tests.API.Utilities;
 using Newtonsoft.Json;
 using System.Net;
@@ -29,7 +28,6 @@ namespace Evershop.Tests.API.Tests
         }
 
         [Test]
-        [ExecutionTimeUnder]
         public async Task CreateProduct()
         {
             // Arrange

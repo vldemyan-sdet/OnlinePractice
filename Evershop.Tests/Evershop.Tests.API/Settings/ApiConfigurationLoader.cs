@@ -13,6 +13,7 @@ public class ApiConfigurationLoader
         ApiSettings.EnableBDDLogging = true;
         ApiSettings.EnableToastMessages = true;
         ApiSettings.PostreeSqlConnectionString = "Host=localhost;Port=5433;Username=postgres;Password=postgres;Database=postgres";
+        //ApiSettings.PostreeSqlConnectionString = "Host=localhost;Port=5432;Username=postgres;Password=postgres;Database=evershop";
     }
 
 }
