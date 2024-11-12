@@ -1,4 +1,5 @@
-﻿using Evershop.Tests.API.Utilities;
+﻿using Evershop.Tests.API.Models;
+using Evershop.Tests.API.Utilities;
 using System.Reflection;
 
 namespace Evershop.Tests.API.Plugins;
@@ -30,10 +31,14 @@ public class ExecutionTimeLogInDbPlugin : Plugin
             var startTime = _testsExecutionTimes[testFullName];
             _testsExecutionTimes.Remove(testFullName);
 
-            //var dbUtil = new DbUtil();
-            //dbUtil.LogTestExecutionTime(testFullName, startTime, endTime, result);
-            var testingAPIServiceUtil = new TestingAPIServiceUtil();
-            testingAPIServiceUtil.LogTestExecutionTimeAsync(testFullName, startTime, endTime, result).Wait();
+            var testRunModel = new TestRunModel
+            {
+                TestName = testFullName,
+                StartTime = startTime,
+                EndTime = endTime,
+                Result = result.ToString()
+            };
+            TestingAPIServiceUtil.LogTestExecutionTimeAsync(testRunModel).Wait();
         }
 
     }

@@ -1,45 +1,20 @@
 ﻿using Evershop.Tests.API.Models;
-using Evershop.Tests.API.Plugins;
 using Newtonsoft.Json;
-using RestSharp.Authenticators;
-using RestSharp.Serializers.NewtonsoftJson;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Evershop.Tests.API.Utilities
 {
     internal class TestingAPIServiceUtil
     {
-        public async Task LogTestExecutionTimeAsync(string testName, DateTime startTime, DateTime endTime, TestOutcome testResult)
+        public static async Task LogTestExecutionTimeAsync(TestRunModel testRunModel)
         {
-            var request = new RestRequest("TestRuns", Method.Post);
-            var testRunModel = new TestRunModel();
-            testRunModel.TestName = testName;
-            testRunModel.StartTime = startTime;
-            testRunModel.EndTime = endTime;
-            testRunModel.Result = testResult.ToString();
-            //request.AddJsonBody(new { test_name = testName, start_time = startTime.ToString("o"), end_time = endTime.ToString("o"), result = testResult.ToString() });
-            request.AddJsonBody(testRunModel);
+            var json = JsonConvert.SerializeObject(testRunModel);
+            var data = new StringContent(json, Encoding.UTF8, "application/json");
 
-            var options = new RestClientOptions()
-            {
-                ThrowOnAnyError = true,
-                FollowRedirects = true,
-                MaxRedirects = 10,
-                BaseUrl = new Uri("https://localhost:7180/")
-            };
+            var url = "https://localhost:7180/TestRuns";
+            using var client = new HttpClient();
 
-            var settings = new JsonSerializerSettings()
-            {
-                ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
-            };
-
-            var apiClient = new RestClient(options, configureSerialization: s => s.UseNewtonsoftJson(settings));
-
-            var response = await apiClient.PostAsync(request);
+            var response = await client.PostAsync(url, data);
+            var body = response.Content.ReadAsStringAsync();
         }
     }
 }
