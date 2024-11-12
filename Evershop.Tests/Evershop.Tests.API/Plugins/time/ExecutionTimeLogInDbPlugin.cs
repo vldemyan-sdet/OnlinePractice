@@ -30,8 +30,10 @@ public class ExecutionTimeLogInDbPlugin : Plugin
             var startTime = _testsExecutionTimes[testFullName];
             _testsExecutionTimes.Remove(testFullName);
 
-            var dbUtil = new DbUtil();
-            dbUtil.LogTestExecutionTime(testFullName, startTime, endTime, result);
+            //var dbUtil = new DbUtil();
+            //dbUtil.LogTestExecutionTime(testFullName, startTime, endTime, result);
+            var testingAPIServiceUtil = new TestingAPIServiceUtil();
+            testingAPIServiceUtil.LogTestExecutionTimeAsync(testFullName, startTime, endTime, result).Wait();
         }
 
     }
