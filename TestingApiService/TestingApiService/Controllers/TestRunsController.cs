@@ -18,7 +18,7 @@ namespace TestingApiService.Controllers
         [HttpPost]
         public void Post(TestRunModel testRunModel)
         {
-            var dbRepo = new TestRunsRepository();
+            var dbRepo = new TestRunsRepositoryMyslq();
             dbRepo.LogTestExecutionTime(testRunModel);
         }
     }

@@ -10,6 +10,7 @@
             ApiSettings.MaxRetryAttempts = 3;
             ApiSettings.EnableBDDLogging = true;
             ApiSettings.EnableToastMessages = true;
+            ApiSettings.MysqlConnectionString = "Server=db; database=testingapi; UID=root; password=root";
             ApiSettings.PostreeSqlConnectionString = "Host=localhost;Port=5433;Username=postgres;Password=postgres;Database=testingapi";
             //ApiSettings.PostreeSqlConnectionString = "Host=localhost;Port=5432;Username=postgres;Password=postgres;Database=evershop";
         }

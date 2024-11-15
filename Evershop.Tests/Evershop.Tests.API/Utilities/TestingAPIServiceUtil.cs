@@ -10,7 +10,7 @@ namespace Evershop.Tests.API.Utilities
             var json = JsonConvert.SerializeObject(testRunModel);
             var data = new StringContent(json, Encoding.UTF8, "application/json");
 
-            var url = "https://localhost:7180/TestRuns";
+            var url = "http://localhost:5000/TestRuns";
             using var client = new HttpClient();
 
             var response = await client.PostAsync(url, data);

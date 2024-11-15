@@ -1,0 +1,44 @@
+version: '1.0'
+
+services:
+  app:
+    image: testing-api-service
+    restart: always
+    environment:
+      DB_HOST: database
+      DB_PORT: 5432
+      DB_PASSWORD: postgres
+      DB_USER: postgres
+      DB_NAME: postgres
+    networks:
+      - mynetwork
+    depends_on:
+      - db
+    ports:
+      - 5000:8080
+
+  db:
+    image: mariadb
+    restart: always
+    environment:
+      MARIADB_ROOT_PASSWORD: root
+    volumes:
+      -  mysql-data:/var/lib/mysql
+    networks:
+      - mynetwork      
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8082:8080  
+    networks:
+      - mynetwork         
+
+networks:
+  mynetwork:
+    name: mynetwork
+    driver: bridge
+
+volumes:
+  mysql-data:

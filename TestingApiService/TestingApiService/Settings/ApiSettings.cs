@@ -9,5 +9,6 @@
         public static bool EnableBDDLogging { get; set; }
         public static bool EnableToastMessages { get; set; }
         public static string PostreeSqlConnectionString { get; set; }
+        public static string MysqlConnectionString { get; set; }
     }
 }
