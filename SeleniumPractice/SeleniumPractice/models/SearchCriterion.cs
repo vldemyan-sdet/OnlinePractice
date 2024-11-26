@@ -11,5 +11,7 @@ namespace SeleniumPractice.models
         public string City { get; set; }
         public string StartDate { get; set; }
         public string EndDate { get; set; }
+        public int Distance { get; set; }
+        public string Rating { get; set; }
     }
 }

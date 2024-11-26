@@ -10,6 +10,8 @@ namespace SeleniumPractice.Pages
         private By datesSelect = By.CssSelector("[data-testid='searchbox-dates-container']");
         private By searchButton = By.CssSelector("button[type='submit']");
         private By roomResultCard = By.CssSelector("[data-testid='property-card']");
+        private string distanceFilterGroupFormat = "//*[@id='bodyconstraint']//*[@data-filters-group = 'distance']//*[@data-filters-item='distance:distance={0}']";
+
         
 
 
@@ -21,7 +23,8 @@ namespace SeleniumPractice.Pages
         public void Open()
         {
             _driver.NavigateTo("https://www.booking.com");
-            _driver.WaitForElementVisible(popupCloseIcon);
+            Thread.Sleep(2000);
+            //_driver.WaitForElementVisible(popupCloseIcon);
         
         }
         
@@ -43,12 +46,24 @@ namespace SeleniumPractice.Pages
         public void ClickSearch()
         {
             _driver.ClickElement(searchButton);
+            Thread.Sleep(2000);
+        }
+
+        public void FilterByDistanceToCenter(int km)
+        {
+            var locator = string.Format(distanceFilterGroupFormat, km * 1000);
+            var element = _driver.FindElement(By.XPath(locator));
+            _driver.ScrollTo(element);
+            element.Click();
         }
 
 
         internal void CloseRegisterPopup()
         {
-            _driver.ClickElement(popupCloseIcon);
+            if(_driver.FindElements(popupCloseIcon).Count > 0)
+            {
+                _driver.ClickElement(popupCloseIcon);
+            }
         }
 
         internal IEnumerable<IWebElement> GetRoomsSearchResults()

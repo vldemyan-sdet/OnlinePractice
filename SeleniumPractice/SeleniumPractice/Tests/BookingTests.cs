@@ -35,6 +35,8 @@ namespace SeleniumPractice.Tests
                         City = values[0],
                         StartDate = values[1],
                         EndDate = values[2],
+                        Distance = int.Parse(values[3]),
+                        Rating = values[4],
                     };
 
                     searchCriteria.Add(searchCriterion);
@@ -48,12 +50,13 @@ namespace SeleniumPractice.Tests
             bookingPage.FillCity(searchCriteria.First().City);
             bookingPage.FillDates(searchCriteria.First().StartDate, searchCriteria.First().EndDate);
             bookingPage.ClickSearch();
+            bookingPage.FilterByDistanceToCenter(searchCriteria.First().Distance);
 
             // Assert
             var searchResultsCount = bookingPage.GetRoomsSearchResults().Count();
             Assert.That(searchResultsCount, Is.EqualTo(defaultSearchResultsCountPerPage));
         }
 
-
+    
     }
 }
