@@ -20,4 +20,10 @@
     <PackageReference Include="Selenium.WebDriver.ChromeDriver" Version="131.0.6778.8500" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="data\booking.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

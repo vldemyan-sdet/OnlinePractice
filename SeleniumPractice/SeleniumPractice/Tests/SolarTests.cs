@@ -1,4 +1,5 @@
 ﻿using SeleniumPractice.Pages;
+using System.Reflection;
 
 namespace SeleniumPractice.Tests
 {
@@ -8,6 +9,9 @@ namespace SeleniumPractice.Tests
         [Test]
         public void VerifyFiltering()
         {
+            var AssemblyDirectory = TestContext.CurrentContext.TestDirectory;
+            var csvPath = Path.Combine(AssemblyDirectory, "data", "booking.csv");
+
             // Arrange
             var solarPage = new SolarPage(_driver);
             solarPage.Open();
