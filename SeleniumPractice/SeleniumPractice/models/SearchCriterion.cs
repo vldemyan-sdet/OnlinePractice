@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SeleniumPractice.models
 {
-    internal class SearchCriterion
+    public class SearchCriterion
     {
         public string City { get; set; }
         public string StartDate { get; set; }

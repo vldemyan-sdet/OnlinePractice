@@ -1,6 +1,6 @@
-﻿using SeleniumPractice.models;
+﻿using SeleniumPractice.Helpers;
+using SeleniumPractice.models;
 using SeleniumPractice.Pages;
-using System.Reflection;
 
 namespace SeleniumPractice.Tests
 {
@@ -8,55 +8,26 @@ namespace SeleniumPractice.Tests
     {
         int defaultSearchResultsCountPerPage = 25;
 
-        [Test]
-        public void VerifyFiltering()
+        [TestCaseSource(nameof(SearchCriteriaData))]
+        public void VerifyFiltering(SearchCriterion searchCriterion)
         {
-            var AssemblyDirectory = TestContext.CurrentContext.TestDirectory;
-            var csvPath = Path.Combine(AssemblyDirectory, "data", "booking.csv");
-
-            List<SearchCriterion> searchCriteria = new();
-
-            using (var reader = new StreamReader(csvPath))
-            {
-                var wasFirstLineRead = false;
-                while (!reader.EndOfStream)
-                {
-                    var line = reader.ReadLine();
-                    if (! wasFirstLineRead)
-                    {
-                        wasFirstLineRead = true;
-                        continue;
-                    }
-                    
-
-                    var values = line.Split(',');
-                    var searchCriterion = new SearchCriterion()
-                    {
-                        City = values[0],
-                        StartDate = values[1],
-                        EndDate = values[2],
-                        Distance = int.Parse(values[3]),
-                        Rating = values[4],
-                    };
-
-                    searchCriteria.Add(searchCriterion);
-                }
-            }
-
             // Arrange
             var bookingPage = new BookingPage(_driver);
             bookingPage.Open();
             bookingPage.CloseRegisterPopup();
-            bookingPage.FillCity(searchCriteria.First().City);
-            bookingPage.FillDates(searchCriteria.First().StartDate, searchCriteria.First().EndDate);
+            bookingPage.FillCity(searchCriterion.City);
+            bookingPage.FillDates(searchCriterion.StartDate, searchCriterion.EndDate);
             bookingPage.ClickSearch();
-            bookingPage.FilterByDistanceToCenter(searchCriteria.First().Distance);
+            bookingPage.FilterByDistanceToCenter(searchCriterion.Distance);
 
             // Assert
             var searchResultsCount = bookingPage.GetRoomsSearchResults().Count();
             Assert.That(searchResultsCount, Is.EqualTo(defaultSearchResultsCountPerPage));
         }
 
-    
+        static IEnumerable<SearchCriterion> SearchCriteriaData()
+        {
+            return DataProvider.GetSearchCriteraTestData("booking.csv");
+        }
     }
 }
