@@ -1,2 +1,3 @@
-city,start date,end date
-Київ,2024-12-19,2024-12-22
+city,start date,end date,Distance from center,Property rating
+Київ,2024-12-19,2024-12-22,1,4
+Pragure,2024-12-17,2024-12-24,3,5
